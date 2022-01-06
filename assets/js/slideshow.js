@@ -4,6 +4,7 @@ const headline = document.getElementById('headline');
 const initialHeadlineText = headline.innerText;
 const finalHeadlineText = "Home at last with Stan..."
 const SLIDE_DURATION = (audio.duration / IMG_COUNT) * 1000;
+let isAutoPlaying = false;
 const sliderOptions = {
   container: "#slider",
   items: 1,
@@ -41,7 +42,7 @@ function appendImages(imgCount = IMG_COUNT) {
 }
 
 function handleFinalSlideTransition(slider, info, eventName) {
-  if (info.index === info.slideCount) {
+  if (info.index === info.slideCount && isAutoPlaying) {
     headline.innerText = finalHeadlineText;
     audio.pause();
     slider.pause();
@@ -63,6 +64,7 @@ function hideArrowBtns() {
 }
 
 function playSlideshow(slider) {
+  isAutoPlaying = true;
   slider.goTo(0);
   slider.play();
   audio.play();
@@ -77,6 +79,7 @@ function pause(slider) {
 }
 
 function restart(slider) {
+  isAutoPlaying = false;
   slider.pause();
   slider.goTo(0);
   showArrowBtns();
