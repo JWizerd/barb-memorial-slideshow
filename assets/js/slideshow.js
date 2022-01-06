@@ -42,12 +42,12 @@ function appendImages(imgCount = IMG_COUNT) {
 
 function showArrowBtns() {
   const arrowBtns = document.querySelectorAll('.tns-controls button');
-  arrowBtns.forEach(btn => btn.classList.remove('hide'));
+  arrowBtns.forEach(btn => btn.classList.remove('hidden'));
 }
 
 function hideArrowBtns() {
   const arrowBtns = document.querySelectorAll('.tns-controls button');
-  arrowBtns.forEach(btn => btn.classList.add('hide'));
+  arrowBtns.forEach(btn => btn.classList.add('hidden'));
 }
 
 function playSlideshow(slider) {
