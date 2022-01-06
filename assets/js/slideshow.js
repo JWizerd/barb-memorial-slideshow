@@ -4,7 +4,6 @@ const headline = document.getElementById('headline');
 const initialHeadlineText = headline.innerText;
 const finalHeadlineText = "Home at last with Stan..."
 const SLIDE_DURATION = (audio.duration / IMG_COUNT) * 1000;
-let isAutoPlaying = false;
 const sliderOptions = {
   container: "#slider",
   items: 1,
@@ -41,17 +40,6 @@ function appendImages(imgCount = IMG_COUNT) {
   document.getElementById('slider-wrapper').appendChild(slider);
 }
 
-function handleFinalSlideTransition(slider, info, eventName) {
-  if (info.slideCount > 0 && info.index === info.slideCount && isAutoPlaying) {
-    headline.innerText = finalHeadlineText;
-    slider.pause();
-
-    setTimeout(() => {
-      restart();
-    }, 10 * 1000);
-  }
-}
-
 function showArrowBtns() {
   const arrowBtns = document.querySelectorAll('.tns-controls button');
   arrowBtns.forEach(btn => btn.classList.remove('hide'));
@@ -63,7 +51,6 @@ function hideArrowBtns() {
 }
 
 function playSlideshow(slider) {
-  isAutoPlaying = true;
   slider.goTo('first');
   slider.play();
   audio.play();
@@ -91,6 +78,15 @@ function init(){
   document.getElementById('slideshow').addEventListener('click', () => playSlideshow(slider));
   document.getElementById('pause').addEventListener('click', () => pause(slider));
   document.getElementById('restart').addEventListener('click', restart);
+
+  audio.onended = function() {
+    headline.innerText = finalHeadlineText;
+    slider.pause();
+
+    setTimeout(() => {
+      restart();
+    }, 10 * 1000);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);
