@@ -53,6 +53,7 @@ body, html {
   display: block;
   margin: 0 auto;
   box-shadow: 0px 2px 11px black;
+  border: 5px solid white;
 }
 
 .hidden {

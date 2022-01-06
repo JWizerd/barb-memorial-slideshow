@@ -47,32 +47,27 @@ function handleFinalSlideTransition(slider, info, eventName) {
     slider.pause();
 
     setTimeout(() => {
-      slider.goTo('first')
-      headline.innerText = initialHeadlineText;
-      slider.events.off('transitionEnd', handleFinalSlideTransition);
-      toggleArrowBtns();
-
+      restart(slider);
     }, 10 * 1000);
   }
 }
 
-function toggleArrowBtns() {
-  const playBtn = document.getElementById('slideshow');
+function showArrowBtns() {
   const arrowBtns = document.querySelectorAll('.tns-controls button');
+  arrowBtns.forEach(btn => btn.classList.remove('hide'));
+}
 
-  if (playBtn.classList.contains('hide')) {
-    arrowBtns.forEach(btn => btn.classList.remove('hide'));
-  } else {
-    arrowBtns.forEach(btn => btn.classList.add('hide'));
-  }
+function hideArrowBtns() {
+  const arrowBtns = document.querySelectorAll('.tns-controls button');
+  arrowBtns.forEach(btn => btn.classList.add('hide'));
 }
 
 function playSlideshow(slider) {
-  slider.goTo('first');
+  slider.goTo(0);
   slider.play();
-  // only play audio on desktops
-  if (window.outerWidth > 1339) audio.play();
-  toggleArrowBtns();
+  audio.play();
+  document.getElementById('slideshow').classList.add('hide');
+  hideArrowBtns();
   slider.events.on('transitionEnd', handleFinalSlideTransition.bind(null, slider))
 }
 
@@ -82,9 +77,14 @@ function pause(slider) {
 }
 
 function restart(slider) {
-  slider.refresh();
+  slider.pause();
+  slider.goTo(0);
+  showArrowBtns();
+  audio.pause();
   headline.innerText = initialHeadlineText;
-  audio.currentTime = 0
+  audio.currentTime = 0;
+  slider.events.off('transitionEnd');
+  document.getElementById('slideshow').classList.remove('hide');
 }
 
 function init(){
