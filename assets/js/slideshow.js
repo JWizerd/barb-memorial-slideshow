@@ -51,7 +51,6 @@ function hideArrowBtns() {
 }
 
 function playSlideshow(slider) {
-  slider.goTo('first');
   slider.play();
   audio.play();
   document.getElementById('slideshow').classList.add('hide');
