@@ -42,7 +42,7 @@ function appendImages(imgCount = IMG_COUNT) {
 }
 
 function handleFinalSlideTransition(slider, info, eventName) {
-  if (info.index === info.slideCount && isAutoPlaying) {
+  if (info.slideCount > 0 && info.index === info.slideCount && isAutoPlaying) {
     headline.innerText = finalHeadlineText;
     slider.pause();
 
@@ -64,7 +64,6 @@ function hideArrowBtns() {
 
 function playSlideshow(slider) {
   isAutoPlaying = true;
-  slider.goTo(0);
   slider.play();
   audio.play();
   document.getElementById('slideshow').classList.add('hide');
