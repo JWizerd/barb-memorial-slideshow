@@ -14,6 +14,7 @@ const sliderOptions = {
   controlsPosition: 'bottom',
   nav: false,
   arrowKeys: true,
+  lazyload: true,
   controlsText: [
     '<i class="fa fa-chevron-left"></i>',
     '<i class="fa fa-chevron-right"></i>'
@@ -29,8 +30,10 @@ function appendImages(imgCount = IMG_COUNT) {
     slideItem.className = 'item';
 
     const img = document.createElement('img');
-    img.className = 'slide';
-    img.src = 'assets/img/slides/' + count + '.jpg';
+    img.classList.add('slide');
+    img.classList.add('tns-lazy-img');
+    img.src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+    img.dataset.src = 'assets/img/slides/' + count + '.jpg';
     slideItem.appendChild(img);
 
     slider.appendChild(slideItem);

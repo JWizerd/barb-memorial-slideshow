@@ -116,6 +116,10 @@ h2 {
 /**
  * Slider Styles
  **/
+ .hidden {
+   visibility: hidden;
+ }
+
  #slider-wrapper {
    overflow: hidden;
  }
