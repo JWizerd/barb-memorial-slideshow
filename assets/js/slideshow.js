@@ -12,6 +12,7 @@ const sliderOptions = {
   loop: false,
   nav: false,
   swipeAngle: false,
+  arrowKeys: true,
   controlsPosition: 'bottom',
   controlsText: [
     '<i class="fa fa-chevron-left"></i>',
