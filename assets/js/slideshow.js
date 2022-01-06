@@ -22,23 +22,30 @@ const sliderOptions = {
   ]
 }
 
-function appendImages(imgCount = IMG_COUNT) {
-  const slider = document.createElement('div');
-  slider.id = 'slider';
+async function appendImages(imgCount = IMG_COUNT) {
+  return new Promise((resolve, reject) => {
+    try {
+      const slider = document.createElement('div');
+      slider.id = 'slider';
 
-  for (let count = 1; count <= imgCount; count++) {
-    const slideItem = document.createElement('div');
-    slideItem.className = 'item';
+      for (let count = 1; count <= imgCount; count++) {
+        const slideItem = document.createElement('div');
+        slideItem.className = 'item';
 
-    const img = document.createElement('img');
-    img.className = 'slide';
-    img.src = 'assets/img/slides/' + count + '.jpg';
-    slideItem.appendChild(img);
+        const img = document.createElement('img');
+        img.className = 'slide';
+        img.src = 'assets/img/slides/' + count + '.jpg';
+        slideItem.appendChild(img);
 
-    slider.appendChild(slideItem);
-  }
+        slider.appendChild(slideItem);
+      }
 
-  document.getElementById('slider-wrapper').appendChild(slider);
+      document.getElementById('slider-wrapper').appendChild(slider);
+      resolve();
+    } catch (error) {
+      reject(error);
+    }
+  });
 }
 
 function showArrowBtns() {
@@ -63,23 +70,27 @@ function restart() {
   location.reload();
 }
 
-function init(){
-  appendImages();
-  const slider = tns(sliderOptions);
+async function init(){
+  try {
+    await appendImages();
+    const slider = tns(sliderOptions);
 
-  // pause slideshow at first to let user decide which action to take
-  slider.pause();
-
-  document.getElementById('slideshow').addEventListener('click', () => playSlideshow(slider));
-  document.getElementById('restart').addEventListener('click', restart);
-
-  audio.onended = function() {
-    headline.innerText = finalHeadlineText;
+    // pause slideshow at first to let user decide which action to take
     slider.pause();
 
-    setTimeout(() => {
-      restart();
-    }, 10 * 1000);
+    document.getElementById('slideshow').addEventListener('click', () => playSlideshow(slider));
+    document.getElementById('restart').addEventListener('click', restart);
+
+    audio.onended = function() {
+      headline.innerText = finalHeadlineText;
+      slider.pause();
+
+      setTimeout(() => {
+        restart();
+      }, 10 * 1000);
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
 
