@@ -59,15 +59,18 @@ function hideArrowBtns() {
 }
 
 function playSlideshow(slider) {
-  slider.goTo('first');
   slider.play();
   audio.play();
-  document.getElementById('slideshow').classList.add('hide');
+  hidePlayButton();
   hideArrowBtns();
 }
 
 function restart() {
   location.reload();
+}
+
+function hidePlayButton() {
+  document.getElementById('slideshow').classList.add('hide');
 }
 
 async function init(){
@@ -80,6 +83,7 @@ async function init(){
 
     document.getElementById('slideshow').addEventListener('click', () => playSlideshow(slider));
     document.getElementById('restart').addEventListener('click', restart);
+    document.querySelectorAll('.tns-controls button').forEach(btn => btn.addEventListener('click', hidePlayButton));
 
     audio.onended = function() {
       headline.innerText = finalHeadlineText;
