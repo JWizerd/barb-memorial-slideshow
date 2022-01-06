@@ -1,4 +1,4 @@
-const IMG_COUNT = 46;
+const IMG_COUNT = 31;
 const audio = document.getElementById("audio");
 const headline = document.getElementById('headline');
 const initialHeadlineText = headline.innerText;
@@ -65,7 +65,7 @@ function restart(slider) {
 }
 
 function onSlideTransition(slider, info, eventName) {
-  if (info.index === info.slideCount) {
+  if (info.index === info.slideCount - 1) {
     headline.innerText = finalHeadlineText;
     audio.pause();
     slider.pause();
