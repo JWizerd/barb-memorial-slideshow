@@ -56,7 +56,6 @@ function playSlideshow(slider) {
   audio.play();
   document.getElementById('slideshow').classList.add('hide');
   hideArrowBtns();
-  slider.events.on('transitionEnd', handleFinalSlideTransition.bind(null, slider))
 }
 
 function pause(slider) {
