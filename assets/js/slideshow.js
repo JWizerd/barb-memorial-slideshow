@@ -64,6 +64,7 @@ function hideArrowBtns() {
 
 function playSlideshow(slider) {
   isAutoPlaying = true;
+  slider.goTo('first');
   slider.play();
   audio.play();
   document.getElementById('slideshow').classList.add('hide');
