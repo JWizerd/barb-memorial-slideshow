@@ -1,4 +1,4 @@
-const IMG_COUNT = 31;
+const IMG_COUNT = 51;
 const audio = document.getElementById("audio");
 const headline = document.getElementById('headline');
 const initialHeadlineText = headline.innerText;
@@ -44,7 +44,6 @@ function appendImages(imgCount = IMG_COUNT) {
 function handleFinalSlideTransition(slider, info, eventName) {
   if (info.index === info.slideCount && isAutoPlaying) {
     headline.innerText = finalHeadlineText;
-    audio.pause();
     slider.pause();
 
     setTimeout(() => {
