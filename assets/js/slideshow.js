@@ -7,9 +7,10 @@ const SLIDE_DURATION = (audio.duration / IMG_COUNT) * 1000;
 const sliderOptions = {
   container: "#slider",
   items: 1,
+  slideBy: 1,
   speed: 300,
   autoplay: true,
-  loop: true,
+  loop: false,
   autoplayTimeout: SLIDE_DURATION,
   swipeAngle: false,
   controlsPosition: 'bottom',
@@ -51,6 +52,7 @@ function hideArrowBtns() {
 }
 
 function playSlideshow(slider) {
+  slider.goTo('first');
   slider.play();
   audio.play();
   document.getElementById('slideshow').classList.add('hide');
