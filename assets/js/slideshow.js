@@ -14,6 +14,7 @@ const sliderOptions = {
   autoplayTimeout: SLIDE_DURATION,
   swipeAngle: false,
   controlsPosition: 'bottom',
+  useLocalStorage: false,
   nav: false,
   arrowKeys: true,
   controlsText: [
