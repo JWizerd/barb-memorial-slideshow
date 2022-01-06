@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Barbara Hawkins: Memorial Slideshow</title>
+  <link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./node_modules/tiny-slider/dist/tiny-slider.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="controls">
+      <i class="fa fa-music" id="music"></i>
+      <i class="fa fa-pause" id="pause"></i>
+      <i class="fa fa-repeat" id="restart"></i>
+      <i class="fa fa-play" id="start"></i>
+    </div>
+  </header>
+  <div id="slider-wrapper"></div>
+  <footer>
+    <h1 id="headline">Barbara Hawkins: 1947 - 2017</h1>
+  </footer>
+  <!--
+
+  1st song: 181 seconds
+  2nd song: 311 seconds
+
+  Total: 509 seconds of audio
+
+  Both Songs:
+  Song: 311 / 6.89 = 46 photos
+
+  -->
+  <audio id="audio">
+    <source type="audio/mp3" src="assets/audio/illseeyouagain.mp3">
+    <source type="audio/mp3" src="assets/audio/illseeyouagain.ogg">
+    Sorry, your browser does not support HTML5 audio.
+  </audio>
+  <script src="./node_modules/tiny-slider/dist/min/tiny-slider.js"></script>
+  <script src="assets/js/slideshow.js"></script>
+</body>
+</html>
