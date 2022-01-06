@@ -57,11 +57,6 @@ function playSlideshow(slider) {
   hideArrowBtns();
 }
 
-function pause(slider) {
-  audio.pause();
-  slider.pause();
-}
-
 function restart() {
   location.reload();
 }
@@ -74,7 +69,6 @@ function init(){
   slider.pause();
 
   document.getElementById('slideshow').addEventListener('click', () => playSlideshow(slider));
-  document.getElementById('pause').addEventListener('click', () => pause(slider));
   document.getElementById('restart').addEventListener('click', restart);
 
   audio.onended = function() {
