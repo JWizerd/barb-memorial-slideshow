@@ -52,7 +52,7 @@ function playSlideshow(slider) {
   const audio = document.getElementById("audio");
   const DURATION = Math.floor(((audio.duration / IMG_COUNT) * 1000));
   audio.play();
-
+  slider.goTo(0);
   let idx = 1;
   const autoplay = setInterval(() => {
     slider.goTo(idx);
