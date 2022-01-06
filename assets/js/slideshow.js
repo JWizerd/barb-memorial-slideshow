@@ -3,13 +3,14 @@ const audio = document.getElementById("audio");
 const headline = document.getElementById('headline');
 const initialHeadlineText = headline.innerText;
 const finalHeadlineText = "Home at last with Stan..."
+const SLIDE_DURATION = (audio.duration / IMG_COUNT) * 1000;
 const sliderOptions = {
   container: "#slider",
   items: 1,
   speed: 300,
   autoplay: true,
-  loop: false,
-  autoplayTimeout: (audio.duration / IMG_COUNT) * 1000,
+  loop: true,
+  autoplayTimeout: SLIDE_DURATION,
   swipeAngle: false,
   controlsPosition: 'bottom',
   nav: false,
@@ -39,17 +40,40 @@ function appendImages(imgCount = IMG_COUNT) {
   document.getElementById('slider-wrapper').appendChild(slider);
 }
 
-function startWithMusic(slider) {
-  slider.goTo('first');
-  slider.play();
-  audio.play();
+function handleFinalSlideTransition(slider, info, eventName) {
+  if (info.index === info.slideCount) {
+    headline.innerText = finalHeadlineText;
+    audio.pause();
+    slider.pause();
+
+    setTimeout(() => {
+      slider.goTo('first')
+      headline.innerText = initialHeadlineText;
+      slider.events.off('transitionEnd', handleFinalSlideTransition);
+      toggleArrowBtns();
+
+    }, 10 * 1000);
+  }
 }
 
-function startWithoutMusic(slider) {
+function toggleArrowBtns() {
+  const playBtn = document.getElementById('slideshow');
+  const arrowBtns = document.querySelectorAll('.tns-controls button');
+
+  if (playBtn.classList.contains('hide')) {
+    arrowBtns.forEach(btn => btn.classList.remove('hide'));
+  } else {
+    arrowBtns.forEach(btn => btn.classList.add('hide'));
+  }
+}
+
+function playSlideshow(slider) {
   slider.goTo('first');
   slider.play();
-  audio.pause();
-  audio.currentTime = 0
+  // only play audio on desktops
+  if (window.outerWidth > 1339) audio.play();
+  toggleArrowBtns();
+  slider.events.on('transitionEnd', handleFinalSlideTransition.bind(null, slider))
 }
 
 function pause(slider) {
@@ -58,22 +82,9 @@ function pause(slider) {
 }
 
 function restart(slider) {
-  slider.pause();
-  slider.goTo('first');
-  slider.play();
+  slider.refresh();
+  headline.innerText = initialHeadlineText;
   audio.currentTime = 0
-}
-
-function onSlideTransition(slider, info, eventName) {
-  if (info.index === info.slideCount - 1) {
-    headline.innerText = finalHeadlineText;
-    audio.pause();
-    slider.pause();
-    setTimeout(() => {
-      slider.goTo('first')
-      headline.innerText = initialHeadlineText;
-    }, 10 * 1000);
-  }
 }
 
 function init(){
@@ -83,11 +94,9 @@ function init(){
   // pause slideshow at first to let user decide which action to take
   slider.pause();
 
-  document.getElementById('music').addEventListener('click', () => startWithMusic(slider));
+  document.getElementById('slideshow').addEventListener('click', () => playSlideshow(slider));
   document.getElementById('pause').addEventListener('click', () => pause(slider));
   document.getElementById('restart').addEventListener('click', () => restart(slider));
-  document.getElementById('start').addEventListener('click', () => startWithoutMusic(slider));
-  slider.events.on('transitionEnd', onSlideTransition.bind(null, slider))
 }
 
 document.addEventListener('DOMContentLoaded', init);

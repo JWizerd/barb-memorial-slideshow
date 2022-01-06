@@ -53,7 +53,14 @@ body, html {
   display: block;
   margin: 0 auto;
   box-shadow: 0px 2px 11px black;
-  border: 5px solid white;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.hide {
+  display: none;
 }
 
 footer, header {
@@ -116,10 +123,6 @@ h2 {
 /**
  * Slider Styles
  **/
- .hidden {
-   visibility: hidden;
- }
-
  #slider-wrapper {
    overflow: hidden;
  }
@@ -147,7 +150,7 @@ h2 {
   background: transparent;
   border: none;
   text-transform: uppercase;
-  margin: 10px 20px 30px;
+  margin: 5px;
   font-weight: bold;
   color: white;
   letter-spacing: 1px;
@@ -166,7 +169,7 @@ h2 {
   }
 
   .tns-controls button {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
