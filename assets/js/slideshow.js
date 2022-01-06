@@ -2,6 +2,7 @@ const IMG_COUNT = 46;
 const audio = document.getElementById("audio");
 const headline = document.getElementById('headline');
 const initialHeadlineText = headline.innerText;
+const finalHeadlineText = "Home at last with Stan..."
 const sliderOptions = {
   container: "#slider",
   items: 1,
@@ -65,7 +66,7 @@ function restart(slider) {
 
 function onSlideTransition(slider, info, eventName) {
   if (info.index === info.slideCount) {
-    headline.innerText = "Home at last with Stan..."
+    headline.innerText = finalHeadlineText;
     audio.pause();
     slider.pause();
     setTimeout(() => {
