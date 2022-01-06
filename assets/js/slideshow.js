@@ -47,7 +47,7 @@ function handleFinalSlideTransition(slider, info, eventName) {
     slider.pause();
 
     setTimeout(() => {
-      restart(slider);
+      restart();
     }, 10 * 1000);
   }
 }
@@ -77,16 +77,8 @@ function pause(slider) {
   slider.pause();
 }
 
-function restart(slider) {
-  isAutoPlaying = false;
-  slider.pause();
-  slider.goTo(0);
-  showArrowBtns();
-  audio.pause();
-  headline.innerText = initialHeadlineText;
-  audio.currentTime = 0;
-  slider.events.off('transitionEnd');
-  document.getElementById('slideshow').classList.remove('hide');
+function restart() {
+  location.reload();
 }
 
 function init(){
@@ -98,7 +90,7 @@ function init(){
 
   document.getElementById('slideshow').addEventListener('click', () => playSlideshow(slider));
   document.getElementById('pause').addEventListener('click', () => pause(slider));
-  document.getElementById('restart').addEventListener('click', () => restart(slider));
+  document.getElementById('restart').addEventListener('click', restart);
 }
 
 document.addEventListener('DOMContentLoaded', init);
