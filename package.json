@@ -7,8 +7,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "rename": "node scripts/rename-files.js",
-    "build": "node scripts/build-data.js"
+    "build": "node source-flickr-data.js",
+    "build:fresh": "node source-flickr-data.js --fresh"
   },
   "repository": {
     "type": "git",
