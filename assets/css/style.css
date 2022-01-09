@@ -52,6 +52,9 @@ body, html {
   max-width: 80%;
   display: block;
   margin: 0 auto;
+  /**
+   * for some reason, removing the border here breaks tiny slider
+   **/
   border: 5px solid white;
 }
 
