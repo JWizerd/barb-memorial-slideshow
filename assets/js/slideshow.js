@@ -77,7 +77,6 @@ function hidePlayButton() {
 }
 
 function init(){
-  debugger;
   appendImages(window.SLIDE_DATA);
   const slider = tns(sliderOptions);
   document.getElementById('slideshow').addEventListener('click', () => playSlideshow(slider));
