@@ -8,10 +8,10 @@
 
 Source images from Flickr API, then build a dataset to be consumed by the client
 ```shell
-npm run build
+node scripts/source-flickr-data.js
 ```
 
 Delete local images and re-run build
 ```shell
-npm run build:fresh
+node scripts/source-flickr-data.js --fresh
 ```
