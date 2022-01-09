@@ -41,7 +41,6 @@ function formatToSlideImages(flickrPhotos) {
 async function fetchImages() {
   try {
     const endpoint = getEndpoint();
-    debugger;
     const res = await fetch(endpoint);
     const { photoset: { photo }} = await res.json();
     return formatToSlideImages(photo);
