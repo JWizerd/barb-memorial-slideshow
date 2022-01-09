@@ -52,7 +52,6 @@ body, html {
   max-width: 80%;
   display: block;
   margin: 0 auto;
-  box-shadow: 0px 2px 11px black;
   border: 5px solid white;
 }
 
@@ -94,7 +93,6 @@ h1,h2 {
   text-align: center;
   width: 100%;
   font-family: 'Stan', sans-serif;
-  text-shadow: 0px 2px 2px black;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -156,7 +154,6 @@ h2 {
   color: white;
   letter-spacing: 1px;
   font-size: 36px;
-  text-shadow: 0px 2px 2px black;
   font-family: 'Stan';
 }
 
