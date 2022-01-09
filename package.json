@@ -1,0 +1,24 @@
+{
+  "name": "barb-memorial-slideshow",
+  "version": "1.0.0",
+  "description": "## Commands",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rename": "node scripts/rename-files.js",
+    "build": "node scripts/build-data.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JWizerd/barb-memorial-slideshow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JWizerd/barb-memorial-slideshow/issues"
+  },
+  "homepage": "https://github.com/JWizerd/barb-memorial-slideshow#readme"
+}
