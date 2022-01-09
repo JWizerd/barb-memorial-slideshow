@@ -17,11 +17,15 @@ const sliderOptions = {
   controlsText: [
     '<i class="fa fa-chevron-left"></i>',
     '<i class="fa fa-chevron-right"></i>'
-  ]
+  ],
+  onInit: () => {
+    document.getElementById('slider').classList.remove('hidden');
+  }
 }
 
 function appendImages(slideImages) {
   const slider = document.createElement('div');
+  slider.classList.add('hidden');
   slider.id = 'slider';
 
   for (const slide of slideImages) {
