@@ -1,19 +1,17 @@
-# barbara-memorial-slideshow
+# Grandma Barb Memorial Slideshow
 
 ## Integrations
-
-Currently, I'm using the Flickr API since it provides an interface to sort an album without having to rely on file name, updated, created etc.
-
-There is a static builder script that can be used to rename files so they can be ordered, and also a data building script which reads the directory of slide images and makes javascript objects out of them.
+- Flickr API: [flickr.photosets.getPhotos](https://www.flickr.com/services/api/flickr.photosets.getPhotos.html)
+- [Tiny Slider](https://github.com/ganlanyuan/tiny-slider)
 
 ## Commands
 
-Rename images in slide directory
+Source images from Flickr API, then build a dataset to be consumed by the client
 ```shell
-npm run rename
+node scripts/source-flickr-data.js
 ```
 
-Build slide data
+Delete local images and re-run build
 ```shell
-npm run build
+node scripts/source-flickr-data.js --fresh
 ```
