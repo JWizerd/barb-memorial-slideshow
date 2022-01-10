@@ -15,7 +15,7 @@ function setInitialMap({ photo }) {
     const img = photo[index];
     imageMap[img.id] = {
       order: index + 1,
-      url: img.url_o,
+      url: img.url_m || img.url_o,
       id: img.id
     }
   }
@@ -52,7 +52,7 @@ function getEndpoint() {
   params.set('api_key', '87b8cc4a3b91905bef80d87830eb658c');
   params.set('user_id', '164697344@N07');
   params.set('photoset_id', '72177720295822995');
-  params.set('extras', 'url_o');
+  params.set('extras', 'url_o,url_m');
   params.set('format', 'json')
   params.set('nojsoncallback', 1);
   url.search = params.toString();
